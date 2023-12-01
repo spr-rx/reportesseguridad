@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrastrar</title>
+    <link rel="stylesheet" href="main.css">
+    
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.drop-area{
+    border: 5px dashed #ddd;
+    height: 500px;
+    width: 700px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+}
+
+.drop-area.active{
+    background-color: #b8b4fe;
+    color: black;
+    border: 2px dashed #618ac9;
+
+}
+
+.drop-area h2{
+    font-size: 30px;
+    font-weight: 500;
+    color: #000;
+}
+
+.drop-area span{
+    font-size: 25px;
+    font-weight: 500;
+    color: #000;
+}
+
+.drop-area button{
+    padding: 10px 25px;
+    font-size: 20px;
+    border: 0;
+    outline: none;
+    background-color: #5256ad;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 20px;
+}
+
+.file-container {
+    display: grid;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border: solid 1px #ddd;
+
+}
+
+#preview{
+    margin-top: 0 10px;
+}
+
+.status-text{
+    padding: 0 10px;
+}
+
+
+
+.success{
+    color: #52ad5a;
+}
+
+.failure {
+    color: #ff0000;
+}
+
+#preview {
+    margin-top: 10px; /* Añade un margen superior para separar los archivos de la zona de soltar */
+    display: grid;
+    flex-direction: column; /* Cambia la dirección principal del contenedor a columna */
+}
+
+
+#upload-button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+#upload-button:hover {
+  background-color: #45a049;
+}
+#upload-button:active {
+  background-color: #3e8e41;
+}
+
+.contenedor {
+
+    align-items: right;
+    text-align: right;
+    align-content: right;
+}
+
+.contenedor #upload-button {
+    
+    margin: 10px;
+}
+
+
+    </style>
+</head>
+<body>
+
+   
+   
+
+    <div class="contenedor">
+        <div class="drop-area">
+            <h2>Arrastra y suelta los pdf</h2>
+            <span>0</span>
+            <button>selecciona tus archivos</button>
+            <input type="file" name="" id="input-file" hidden multiple>
+        </div>
+
+        <button id="upload-button"> Subir Archivos</button>
+    
+        <div id="preview"></div>
+
+        
+    </div>
+
+
+<script >
+
+const dropArea = document.querySelector(".drop-area");
+const dragText = dropArea.querySelector('h2');
+const button = dropArea.querySelector('button');
+const input = dropArea.querySelector("#input-file");
+let isUploadButtonClicked = false; 
+
+const processedFiles = new Set(); // Un conjunto para almacenar los nombres de archivos procesados
+
+button.addEventListener('click', e => {
+    input.click();
+});
+
+input.addEventListener("change", (e) => {
+    files = Array.from(e.target.files); // Convertir FileList a un array para poder utilizar el método forEach
+    dropArea.classList.add("active");
+    showFiles(files);
+    dropArea.classList.remove("active");
+});
+
+
+
+dropArea.addEventListener("dragover", (e) => {
+    e.preventDefault();
+    dropArea.classList.add("active");
+    dragText.textContent = "Suelta para subir los archivos";
+
+})
+
+
+dropArea.addEventListener("dragleave", (e) => {
+    e.preventDefault();
+    dropArea.classList.add("active");
+    dragText.textContent = "Arrastra y suelta las imagenes";
+
+})
+
+
+dropArea.addEventListener("drop", (e) => {
+    e.preventDefault();
+    files = e.dataTransfer.files;
+    showFiles(files);
+    dropArea.classList.add("active");
+    dragText.textContent = "Arrastra y suelta las imagenes";
+
+})
+
+
+
+
+
+function showFiles(files){
+    if(files.length === undefined) {
+        processFile(files);
+
+
+    }else{
+        for(const file of files) {
+            processFile(file);
+
+        }
+    }
+
+}
+
+
+let processedFileNames = [];
+function processFile(file) {
+    const fileName = file.name;
+
+    // Verifica si el archivo ya ha sido procesado
+    /*
+    if (processedFiles.has(fileName)) {
+        // El archivo ya ha sido procesado, no hacer nada
+        return;
+    }*/
+
+    if (processedFileNames.includes(fileName)) {
+        // El archivo ya ha sido procesado en esta sesión, no hacer nada
+        return;
+    }
+
+    // Agrega el nombre de archivo al conjunto de archivos procesados
+    processedFileNames.push(fileName);
+
+    // Resto del código de procesamiento del archivo
+    // ...
+
+    // Por ejemplo, aquí puedes agregar el archivo al área de vista previa
+    const fileReader = new FileReader();
+    const id = `file-${Math.random().toString(32).substring(7)}`;
+
+    fileReader.addEventListener('load', e => {
+        const fileUrl = fileReader.result;
+        const image = `
+            <div id="${id}" class="file-container">
+                <img src="/imagenes/pdf.png" width="50px" alt="${file.name}">
+                <div class="status">
+                    <p>${file.name}</p>
+                    <span class="status-text">
+                        Listo para subir ✅
+                    </span> 
+                </div>
+            </div>
+        `;
+
+        const html = document.querySelector('#preview').innerHTML;
+        document.querySelector('#preview').innerHTML = image + html;
+
+        const uploadButton = document.getElementById('upload-button');
+        uploadButton.addEventListener('click', () => {
+            uploadFile(file, id);
+        });
+    });
+
+    fileReader.readAsDataURL(file);
+}
+
+
+
+document.getElementById('upload-button').addEventListener('click', () => {
+    isUploadButtonClicked = true; // Marcar que el botón de subida ha sido presionado
+    // Obtén todos los archivos procesados y súbelos
+    processedFiles.forEach(fileName => {
+        const file = Array.from(files).find(file => file.name === fileName);
+        if (file) {
+            uploadFile(file, `file-${fileName}`);
+        }
+    });
+});
+
+
+
+
+async function uploadFile(file, id){
+
+    const formData = new FormData();
+    formData.append("file", file);
+
+    try {
+        // http://192.168.1.21:3000/usuarios/carpetas/crear_reportes/<%= carpeta %>/<%= sede %>
+
+        
+
+        const response = await fetch("https://www.reportes.spr-rx.com/usuarios/carpetas/crear_reportes/<%= carpeta %>/<%= sede %>",{
+            method: "POST",
+            body: formData, 
+
+        });
+
+        const responseText = await response.text();
+        
+
+        document.querySelector(`#${id} .status-text`
+        ).innerHTML = `<span class="success">Archivo subido correctamente</span>`;
+
+      
+        
+
+    } catch (error) {
+        
+        document.querySelector(`#${id} .status-text`
+        ).innerHTML = `<span class="failure">El archivo no pudo subirse</span>`;
+
+    }
+
+
+}
+
+    </script>
+    
+</body>
+</html>

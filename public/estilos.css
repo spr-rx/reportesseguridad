@@ -1,0 +1,154 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body{
+    min-height: 100vh;
+    display: flex;
+    
+    justify-content: center;
+    align-items: center;
+    background: rgb(31, 31, 31);
+}
+
+.container{
+    height: 400px;
+    width: 50vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    perspective: 500px;
+}
+
+.form-contro{
+    text-align: center;
+}
+
+.logo{
+    width: 300px;
+    height: 230px;
+    
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+    top: 10px;
+    filter: drop-shadow(0px 7px 21px #ff0000);
+    animation: rotar 5s linear infinite;
+}
+
+.logo:hover{
+    cursor: pointer;
+}
+
+@keyframes rotar{
+    from{
+        transform: rotateY(180deg);
+    }
+    to{
+        transform: rotateY(-180deg);
+    }
+}
+
+.bottom_part{
+    width: 20rem;
+    height: 20rem;
+    position: absolute;
+    bottom: -94px;
+    background: #242424;
+    border-radius: 50%;
+    box-shadow: inset 0px 0px 10px 10px #11111136;
+    transform: rotate(90deg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bottom_part::before{
+    content: "";
+    width: 16rem;
+    height: 16rem;
+    position: absolute;
+    bottom: 5rem;
+    background: #ff000059;
+    border-radius: 50%;
+    box-shadow: inset 0px 0px 10px 10px #111111;
+    filter: blur(30px);
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.contenedor{
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+    height: 100%;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    
+}
+.subcontenedor{
+    margin-top: 10%;
+    margin-left: 10%;
+    background-color: aqua;
+    display: grid;
+    align-items: center;
+    width: 300px;
+    height: 300px;
+}
+
+.login-box{
+    width: 350px;
+    height: 420px;
+
+   
+    top: 50%;
+    left: 50%;
+    background-color: rgba(255, 255, 255, 0.87);
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    padding: 30px;
+    box-shadow: 0px 0px 10px rgb(0, 0, 0); /* Sombra para el relieve */
+}
+
+form{
+    margin-top: 20px;
+}
+
+
+.btn{
+    width: 100%;
+}
+.login-box img{
+
+    
+   
+  
+    width: 250px;
+    height: 90px;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+    background-image: url("img/radio.gif");
+}
+
+
+
