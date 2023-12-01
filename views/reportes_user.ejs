@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Reportes</title>
+    <link rel="stylesheet" href="/usuarios.css">
+ 
+    
+
+    <style>
+       
+
+        .report-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .report-card {
+            width: 250px;
+            height: 300px;
+            margin: 10px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .report-card p {
+            margin: 10px 0;
+        }
+
+        .report-card iframe {
+            width: 100%;
+            height: 150px;
+            border: none;
+        }
+
+        .report-card a {
+            margin-top: 10px;
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        .report-card a:hover {
+            text-decoration: underline;
+        }
+
+        .principal-header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+            
+}
+
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="principal-header">
+            <div class="image-izquierda">
+                <img src="/img/logospr.png" width="100px" alt="">
+            </div>
+    
+            <div class="central">
+                <h1>Servicios de Protección Radiológica</h1>
+                <p>Soluciones Integrales en Seguridad y Protección Radiológica <br>
+                Laboratorio Autorizado por el Instituto Peruano de Energía Nuclear <br>
+            Autorización S0653-E6</p>
+    
+            </div>
+    
+            <div class="image-derecha">
+                <img src="/img/logomade.png" width="200px" alt="">
+    
+            </div>
+
+        </div>
+        
+    </header>
+    <h1>Mis Reportes</h1>
+
+    <div class="report-container">
+        <% carpetas.forEach(carpeta => { %>
+            <div class="report-card">
+                <iframe id="pdf-iframe-<%= carpeta.id %>" src="<%= carpeta.ruta %>"></iframe>
+                <p><strong>Nombre:</strong> <%= carpeta.nombre %></p>
+                <a href="/ver_reporte?ruta=<%= carpeta.ruta %>">Ver reporte en pantalla completa</a>
+            </div>
+        <% }); %>
+    </div>
+
+  
+
+    <script>
+        $(document).ready(function() {
+            <% carpetas.forEach(carpeta => { %>
+                $('#verReporteLink-<%= carpeta.id %>').on('click', function(event) {
+                    event.preventDefault();
+                    const ruta = '<%= carpeta.ruta %>';
+                    window.location.href = '/ver_reporte?ruta=' + ruta;
+                });
+            <% }); %>
+        });
+    </script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

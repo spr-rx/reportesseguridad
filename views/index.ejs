@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Dashboard - NiceAdmin Bootstrap Template</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+    <!-- Template Main CSS File -->
+    <link href="/css/style2.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+    <style>
+                 datos {border:1px solid #ccc;padding:10px;font-size:1em;}
+
+                  datos tr:nth-child(even) {background:#ccc;}
+
+                  datos td {padding:5px;}
+
+                  datos tr.noSearch {background:White;font-size:0.8em;}
+
+                  datos tr.noSearch td {padding-top:10px;text-align:right;}
+
+                  .hide {display:none;}
+
+                  .red {color:Red;}
+
+
+                  #searchTerm {
+                  background: url(https://cdn0.iconfinder.com/data/icons/slim-square-icons-basics/100/basics-19-32.png) no-repeat 0px 5px;
+                  background-size: 24px;
+                  width: 500px;
+                  border: transparent;
+                  border-bottom: solid 1px #ccc;
+                  padding: 10px 10px 10px 30px;
+                  outline: none;
+                }
+
+
+                .usuarios{
+                  width: auto;
+                  background-color: white;
+                }
+
+                              #datos {
+                  width: 100%;
+                  max-width: 100%; /* O establece un valor específico en píxeles o em */
+              }
+
+              
+
+                .buscador{
+
+                  text-align: center;
+
+                  align-items: center;
+                  align-content: center;
+
+                }
+
+    </style>
+
+  <!-- =======================================================
+  * Template Name: NiceAdmin
+  * Updated: Sep 18 2023 with Bootstrap v5.3.2
+  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo d-flex align-items-center">
+        <img src="/img/logospr.png"  alt="">
+        <span class="d-none d-lg-block">SyTPR</span>
+      </a>
+      <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div><!-- End Logo -->
+
+    <div class="d-flex align-items-center centroide">
+        
+       
+
+    </div><!-- End Logo -->
+  
+
+  
+
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
+
+
+       
+
+    
+        
+
+
+        </li><!-- End Search Icon-->
+
+        <img src="" width="100px" alt="">
+        
+        
+
+        </li><!-- End Messages Nav -->
+
+        <li class="nav-item dropdown pe-3">
+        
+
+          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+            <img src="/imagenes/profile-img.jpg" alt="Profile" class="rounded-circle">
+            <span class="d-none d-md-block dropdown-toggle ps-2"> <%= ruc %></span>
+          </a><!-- End Profile Iamge Icon -->
+
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+            <li class="dropdown-header">
+              <h6><%= ruc %></h6>
+              <span>Ruc</span>
+            </li>
+      
+           
+            
+           
+            
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="/logout">
+                <i  class="bi bi-box-arrow-right"></i>
+                <span>Sign Out</span>
+              </a>
+            </li>
+
+          </ul><!-- End Profile Dropdown Items -->
+        </li><!-- End Profile Nav -->
+
+      </ul>
+    </nav><!-- End Icons Navigation -->
+
+  </header><!-- End Header -->
+
+
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+      <li class="nav-item">
+        <a class="nav-link " href="#">
+          <i class="bi bi-grid"></i>
+          <span>Usuarios</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link " href="/usuarios/agregar_usuario">
+          <i class="bi bi-grid"></i>
+          <span>Agregar cliente</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link " href="/usuarios/mensajes">
+          <i class="bi bi-grid"></i>
+          <span>Mensajes</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+
+
+
+    </ul>
+
+  </aside><!-- End Sidebar-->
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Dashboard</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item active">Dashboard</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section dashboard">
+      <div class="row">
+
+        <!-- Left side columns -->
+        <div class="col-lg-8">
+          <div class="row">
+
+            <!-- Sales Card -->
+            <div class="col-xxl-4 col-md-6">
+              <div class="card info-card sales-card">
+
+                
+
+                <div class="card-body">
+                  <h5 class="card-title"> <span>Cantidad de carpetas </span></h5>
+
+                  <div class="d-flex align-items-center">
+                    <div style="background-image: url('/imagenes/carpeta.png'); background-size: cover;" class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                      <i class="bi bi-cart"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h6><%= rango %></h6>
+                     
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div><!-- End Sales Card -->
+
+            <!-- Revenue Card -->
+            <div class="col-xxl-4 col-md-6">
+              <div class="card info-card revenue-card">
+
+                <div class="filter">
+                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                  
+                </div>
+
+                <div class="card-body">
+                  <h5 class="card-title"> <span> Cantidad de reportes </span></h5>
+
+                  <div class="d-flex align-items-center">
+                    <div style="background-image: url('/imagenes/reporte.png'); background-size: cover;" class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                      <i class="bi bi-currency-dollar"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h6><%= rango2 %></h6>
+                      
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div><!-- End Revenue Card -->
+
+           <!-- Revenue Card -->
+           <div class="col-xxl-4 col-md-6">
+            <div class="card info-card revenue-card">
+
+              <div class="filter">
+                <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                
+              </div>
+
+              <div class="card-body">
+                <h5 class="card-title"> <span> Cantidad de usuarios </span></h5>
+
+                <div class="d-flex align-items-center">
+                  <div style="background-image: url('/imagenes/reporte.png'); background-size: cover;" class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                    <i class="bi bi-currency-dollar"></i>
+                  </div>
+                  <div class="ps-3">
+                    <h6><%= rango3 %></h6>
+                    
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div><!-- End Revenue Card -->
+
+           
+            <div class="usuarios">
+
+              <div class="card"> 
+                <div class="card-body">
+                  <form class="buscador">
+
+                   <input id="searchTerm" type="text" onkeyup="doSearch()" />
+            
+                  </form>
+            
+                  <h5 class="card-title">Usuarios</h5>
+                  
+                  <!-- Bordered Table -->
+                  <table id="datos" class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th scope="col">id</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Rol</th>
+                        <th scope="col">Ruc</th>
+                        <th scope="col">Password</th>
+                        <th scope="col">Opciones</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <% usuarios.forEach(usuario => { %>
+                        <tr>
+                            <th scope="row"><%= usuario.id %></th>
+                            <td><%= usuario.nombre_empresa %></td>
+                            
+                            <% if (usuario.id_rol === 1) { %>
+        
+                                <td>user</td>
+        
+                           <% } else { %>
+        
+                        
+                            <td>admin</td>
+        
+                           <% } %>
+                            
+        
+                            <td><%= usuario.ruc %></td>
+                            <td><%= usuario.password %></td>
+                            <td class="action-buttons">
+
+                              
+                                
+                                <a  data-id="<%= usuario.id %>"   class="eliminarRegistro btn btn-danger btn-sm"><i class="material-icons">delete</i></a>
+                               
+                               
+                                <a href="/usuarios/detalle/<%= usuario.id %>" class="btn btn-primary btn-sm"><i class="material-icons">edit</i></a>
+                                <a href="/usuarios/carpetas/sede/<%= usuario.id %>" class="btn btn-success btn-sm"><i class="material-icons">folder</i></a>
+                            </td>
+                        </tr>
+
+                        <tr class='noSearch hide'>
+
+                          <td colspan="5"></td>
+          
+                         </tr>
+                        <% }); %> 
+
+                         
+          
+                    </tbody>
+                  </table>
+                  <!-- End Bordered Table -->
+                </div>
+              </div>
+
+            </div>
+           
+
+                 
+           
+
+  
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/chart.js/chart.umd.js"></script>
+  <script src="assets/vendor/echarts/echarts.min.js"></script>
+  <script src="assets/vendor/quill/quill.min.js"></script>
+  <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="assets/vendor/tinymce/tinymce.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+
+
+
+
+  <script>
+
+function doSearch()
+
+{
+
+    const tableReg = document.getElementById('datos');
+
+    const searchText = document.getElementById('searchTerm').value.toLowerCase();
+
+    let total = 0;
+
+
+
+    // Recorremos todas las filas con contenido de la tabla
+
+    for (let i = 1; i < tableReg.rows.length; i++) {
+
+        // Si el td tiene la clase "noSearch" no se busca en su cntenido
+
+        if (tableReg.rows[i].classList.contains("noSearch")) {
+
+            continue;
+
+        }
+
+
+
+        let found = false;
+
+        const cellsOfRow = tableReg.rows[i].getElementsByTagName('td');
+
+        // Recorremos todas las celdas
+
+        for (let j = 0; j < cellsOfRow.length && !found; j++) {
+
+            const compareWith = cellsOfRow[j].innerHTML.toLowerCase();
+
+            // Buscamos el texto en el contenido de la celda
+
+            if (searchText.length == 0 || compareWith.indexOf(searchText) > -1) {
+
+                found = true;
+
+                total++;
+
+            }
+
+        }
+
+        if (found) {
+
+            tableReg.rows[i].style.display = '';
+
+        } else {
+
+            // si no ha encontrado ninguna coincidencia, esconde la
+
+            // fila de la tabla
+
+            tableReg.rows[i].style.display = 'none';
+
+        }
+
+    }
+
+
+
+    // mostramos las coincidencias
+
+    const lastTR=tableReg.rows[tableReg.rows.length-1];
+
+    const td=lastTR.querySelector("td");
+
+    lastTR.classList.remove("hide", "red");
+
+    if (searchText == "") {
+
+        lastTR.classList.add("hide");
+
+    } else if (total) {
+
+        td.innerHTML="Se ha encontrado "+total+" coincidencia"+((total>1)?"s":"");
+
+    } else {
+
+        lastTR.classList.add("red");
+
+        td.innerHTML="No se han encontrado coincidencias";
+
+    }
+
+}
+    // Selecciona todos los elementos con la clase 'eliminarRegistro'
+    const botonesEliminar = document.querySelectorAll('.eliminarRegistro');
+
+// Agrega un evento clic a cada botón de eliminar
+botonesEliminar.forEach(boton => {
+    boton.addEventListener('click', function(event) {
+        event.preventDefault();
+
+        // Obtiene el usuario_id del atributo data-id
+        const usuarioId = this.getAttribute('data-id');
+        
+        // Muestra una ventana de confirmación
+        const confirmacion = window.confirm('¿Estás seguro de que quieres eliminar este registro?');
+
+        // Si el usuario confirma, envía la solicitud DELETE
+        if (confirmacion) {
+            const url = `/usuarios/delete2/${usuarioId}`;
+
+            fetch(url, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Error al eliminar el registro');
+                }
+                alert('Registro eliminado correctamente.');
+                setTimeout(function() {
+                    location.reload();
+                }, 2000);
+                // Puedes redirigir al usuario o realizar otras acciones después de eliminar el registro
+                // window.location.href = '/usuarios';
+            })
+            .catch(error => {
+                console.error(error);
+                alert('Error al intentar eliminar el registro.');
+            });
+        } else {
+            // Si el usuario cancela, no hagas nada o muestra un mensaje de cancelación
+            alert('Eliminación cancelada.');
+        }
+    });
+});
+
+
+
+
+
+
+  </script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
